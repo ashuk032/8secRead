@@ -1,0 +1,21 @@
+{% extends 'base_dashboard.html' %}
+
+
+{% block search %}
+
+<form class="search-form" action="{ url_for('admin_search') }" method="GET" onsubmit="return false;">
+    <div class="search">
+        <input type="text" name="query" id="search-input" placeholder="search...">
+    </div>
+</form>   
+{% endblock %}     
+
+{% block content %}
+    {% include 'display_section.html' %}     
+{% endblock %}
+
+{% block profile %}
+    {% include 'admin_profile.html' %}
+    <script src="/static/admin_search.js"></script> 
+{% endblock %}
+

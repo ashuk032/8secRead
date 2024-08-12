@@ -1,0 +1,15 @@
+{% block profile %}
+<div id="profile" style="display: none;">
+    <div class="profile">
+        <div class="profile-info">
+            <h2>Welcome, {{ user.username }}</h2>
+            <p>Email: {{ user.u_email }}</p>
+            <p><a href="{{ url_for('my_books', username=user.username) }}">My Books</a></p>
+            <p><a href="{{ url_for('user_stats', username=user.username) }}">Stats</a></p>
+        </div>
+        <form action="{{ url_for('logout') }}" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

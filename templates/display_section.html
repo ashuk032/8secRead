@@ -1,0 +1,18 @@
+{% block display_section %}
+<div class="sec-dis">
+    {% for section in sections %}
+    <div class="sec-dis-box">
+        <a href="{{ url_for('section_book_display', section_id=section.id) }}">
+            <img src="{{ url_for('uploaded_file', filename=section.sec_image) }}" alt="Section Image">
+        </a>
+        <h3>{{ section.sec_name }}</h3>
+        <p>{{ section.description }}</p>
+        <p>{{ section.date_created.strftime('%Y-%m-%d') }}</p>
+        <div class="sec-button">
+            <a href="{{ url_for('edit_section', section_id=section.id) }}"><button>Edit</button></a>
+            <a href="{{ url_for('add_book', section_id=section.id) }}" ><button>Add Book</button></a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base_dashboard.html' %}
+
+{% block profile %}
+    {% include 'user_profile.html' %}
+    <script src="{{ url_for('static', filename='user_search.js') }}"></script>
+{% endblock %}
+
+{% block search %}
+<form class="search-form" action="{{ url_for('user_search') }}" method="GET" onsubmit="return false;">
+    <div class="search">
+        <input type="text" name="query" id="search-input" placeholder="search...">
+    </div>
+</form>   
+{% endblock %}     
+
+{% block content %}
+    {% if book %}
+        {% if book_already_requested(session.get('user_id'), book.book_id) %}
+            {% set status = book_request_status(user.user_id,book.book_id) %}
+            {% if status == 'Approved' %}
+                <div class="pdf-dis">
+                    <h2>Book name:{{ book.name }}</h2>
+                    <h3>Author:{{ book.author }}</h3>
+                    <iframe src="{{ url_for('book_con', filename=book.book_pdf) }}"></iframe>
+                </div>
+            {% else %}
+                <p>This book request is pending approval. You cannot view it until it's approved.</p>
+            {% endif %}
+        {% else %}
+            <p>You have not requested this book. Please request the book first before accessing it.</p>
+        {% endif %}
+    {% else %}
+        <p>No book found.</p>
+    {% endif %}
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+{% endblock %}
+
+
+

@@ -1,0 +1,678 @@
+/* Apply flexbox to the entire body and html to ensure the footer sticks to the bottom */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The main content should take up all available space above the footer */
+.main-content {
+    flex: 1; /* This allows the content to grow and fill the space */
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+}
+.nav-head {
+    display: block;
+    height: 80px;
+    width: auto;
+    border-radius: 2%;
+    background-image: url(/static/images/Untitled\ design\ \(2\).png);
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.7), 
+    0 0 10px rgb(94, 147, 123, 0.6), 
+    0 0 10px rgb(94, 147, 123, 0.5), 
+    0 0 10px rgb(18, 36, 33, 0.4); 
+}
+
+
+.nav-head .logo img {
+    width: 80px;
+    height: auto;
+}
+
+
+.nav-head .user-icon img {
+    position: absolute;
+    top: 15px;
+    right: 20px; 
+    width: 55px;
+    height: auto;
+}
+
+.nav-head .search {
+    display: inline;
+    position: absolute;
+    top: 25px;
+    right: calc(100px + 10px);
+    padding-bottom: 10px;
+    color:#5E937B;
+}
+
+input[type="text"]{
+    width: 200px;
+    height: 20px;
+    padding: 7px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(18, 36, 33, 0.356), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgba(94, 147, 123, 0.192), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+.nav-head .search img {
+    width: 20px;
+    height: auto;  
+}
+
+
+.nav-head .user-icon .bi-search path {
+    fill: #5E937B !important;
+  }
+  
+
+/* user/admin_dashboard_profile */
+
+.profile {
+    position: absolute;
+    top: 88px;
+    right: 2px;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+.profile-info p a {
+    text-decoration: none;
+    color: #122421;
+}
+
+.profile-info p a:hover {
+    text-decoration: none;
+    color: #5E937B;
+}
+
+
+    
+
+/* ADMIN */
+.admin-pro {
+    position: absolute;
+    top: 88px;
+    right: 2px;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+h1 {
+    padding: 2% 0% 0% 2%;
+}
+
+.admin-pro p a {
+    text-decoration: none;
+    color: #122421;
+}
+
+.admin-pro p a:hover {
+    text-decoration: none;
+    color: #5E937B;
+}
+
+
+
+/* general css for buttons */
+
+
+button, .profile button {
+    width: 100px;
+    height: 40px;
+    background-color: #122421;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    width: 100px;
+    height: 40px;
+    background-color: #5E937B;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+
+/* search */
+.search-display {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 20px;
+    padding: 20px; 
+}
+
+#ser-h {
+    padding-top: 28%;
+}
+
+.search-box { 
+    border-radius: 10px; 
+    padding: 10px;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+.book-search {
+    text-align: center; 
+}
+
+.book-search .book-img {
+    width: 100%; 
+    height: 350px; 
+    border-radius: 8px; 
+    margin-bottom: 10px; 
+    object-fit: cover;
+}
+
+.book-search p {
+    font-weight: bold;
+    margin: 5px 0; 
+}
+
+
+
+
+/* section */
+.sec-books {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-bottom: 220px;
+    padding-left: 45px;  
+}
+
+.sec-books .book {
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+    background-size: cover;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+/* Admin add section */
+
+.add-form-cont {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding-top: 5%;
+
+}
+
+.add-section {
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    background-size: cover;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+
+
+.add-section label {
+    display: inline-flex; 
+    margin-bottom: 5px; 
+}
+
+
+.add-section textarea {
+    width: 200px;
+    height: auto;
+    border-radius: 5px; 
+    resize: vertical; 
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+/* section display */
+.sec-dis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    row-gap: 52%; /* Increased row-gap slightly for more vertical space */
+    padding-bottom: 50px; /* Added padding to the bottom for extra space */
+}    
+
+    
+.sec-dis-box {
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+.sec-dis-box img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 9px;
+}
+
+
+.sec-dis-box .text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: #ffffff;
+    padding: 10px;
+    width: 100%;
+}
+
+.sec-button {
+    display: flex;
+}
+
+.sec-button a {
+    margin-right: 10px; 
+}
+
+
+/* Edit section */
+
+.edit-sec-cont {
+    padding-top: 5%;
+    padding-left: 32%;
+}
+
+.edit-sec {
+    position: relative; 
+    width: 400px;
+    height: 450px;
+    border-radius: 5px;  
+    overflow: hidden;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+.edit-sec h1 {
+    text-align: center;
+}
+
+.edit-sec img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    background-size: cover;
+    opacity: 0.3;
+    position: absolute;
+}
+
+.edit-sec form {
+    position: relative; 
+    padding: 20px;
+}
+
+.edit-sec label {
+    display: inline-block; 
+    margin-bottom: 12%;  
+}
+
+.edit-sec .edit-sec-but {
+    display: flex; /* Display buttons inline */ 
+}
+
+.edit-sec .edit-sec-but .del-but {
+    margin-left: 90%;
+}
+
+.edit-sec .edit-sec-but .sav-but {
+    margin-top: 10%;
+    margin-left: 3%;
+}
+
+.edit-sec textarea {
+    width: 200px;
+    height: auto;
+    border-radius: 5px;
+    resize: vertical;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+
+/* Add Book */
+.add-book-cont {
+    padding-top: 3%;
+    padding-left: 32%;
+}
+
+.add-book {
+    padding: 20px;
+    width: 400px;
+    height: auto;
+    border-radius: 5px; 
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+.add-book label{
+    padding: 5%;
+    display: inline-block;
+}
+
+
+/* disply section book */
+
+.dis-books {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);   
+    padding-left: 5%;
+}
+
+.book {
+    width: 200px;
+    height: 300px;
+}
+
+.book img {
+    width: 200px;
+    height: 300px;
+    border-radius: 5px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+.book img:hover {
+    transform: scale(1.2); 
+}
+
+.dis-text button {
+    margin-top: 0;
+}
+
+.book .sec-dis-but{
+    display: inline-flex;
+    gap: 3%;
+}
+
+
+
+/* Edit book form */
+
+.edit-book-cont {
+    padding-top: 5%;
+    padding-left: 32%;
+}
+
+.edit-book {
+    padding-top: 20px;
+    padding-left: 40px;
+    width: 400px;
+    height: 420px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+.edit-book label {
+    display: inline-block;
+    padding: 20px;
+}
+
+
+/* user book display */
+
+.h_user h1 {
+    padding: 0% 0% 0% 0%;
+}
+
+.heading-cont {
+    margin: 2% 6% 2% 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.h_user h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+
+/* Optional: Style the button on hover */
+
+.book-sections-user, .books {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);   
+    padding-left: 3%;
+    margin-bottom: 5%;
+    row-gap: 32%;
+}
+
+.book {
+    margin: 0 40px 30px 40px; 
+}
+
+/* My books User */
+
+.requested-books .book-list, .approved-books .book-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);   
+    padding-top: 1%;
+    padding-left: 3%;
+}
+
+.requested-books {
+    padding-bottom: 5%;
+}
+
+.requested-books h1 {
+    text-align: center;
+    color:#5E937B;
+}
+
+.requested-books h3, .approved-books h3 {
+    padding-left: 2%;
+}
+
+
+.approved-books, .approved-books h3 {
+    padding-top: 3%;
+}
+
+
+/* user stats */
+
+
+.stats-cont {
+    width: 90%;
+    height: auto;
+    padding: 5% 5%;
+    padding-top: 0%;
+    align-items: center;
+}
+
+.user-graphs {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; /* Add some space between the charts */
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+                0 0 10px rgb(94, 147, 123, 0.4), 
+                0 0 10px rgb(94, 147, 123, 0.3), 
+                0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+.user-graphs h3 {
+    margin: 1rem 0;
+}
+
+.user-graphs canvas {
+    max-width: 80%; /* Ensure charts are responsive */
+    height: auto;
+}
+
+
+
+/* admin stats */
+.admin-stats {
+    width: 90%;
+    height: auto;
+    padding: 5% 5%;
+    padding-top: 0%;
+    align-items: center;
+}
+
+
+.admin-graphs {
+    display: flex;
+    justify-content: space-between; 
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+                0 0 10px rgb(94, 147, 123, 0.4), 
+                0 0 10px rgb(94, 147, 123, 0.3), 
+                0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+.admin-graphs img {
+    width: 35%; 
+    height: auto;
+}
+
+.admin-graphs h2 {
+    padding-top: 2%;
+    padding-left: 1%;
+}
+
+
+/* pdf display */
+
+.pdf-dis h2, h3 {
+    padding: 2% 0% 0% 5%;
+}
+
+iframe {
+    width: 90%;
+    height: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+
+
+/* book request admin */
+
+.book-requests {
+    display: block;
+    background-color: #dee0e044;
+    padding-top: 1%;
+    padding-left: 3%;
+    padding-bottom: 2%;
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 1%;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(18, 36, 33, 0.5), 
+    0 0 10px rgb(94, 147, 123, 0.4), 
+    0 0 10px rgb(94, 147, 123, 0.3), 
+    0 0 10px rgb(18, 36, 33, 0.2); 
+}
+  
+  
+option {
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.book-requests th {
+    margin-left: 5%;
+}
+
+.book-requests tbody .user-data td {
+    margin-left: 15%;
+}
+  
+
+
+/* Footer */
+footer {
+    background-color: #122421;
+    color: white;
+    text-align: center;
+    padding: 8px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -10px 10px rgba(18, 36, 33, 0.5),
+                0 -10px 10px rgba(94, 147, 123, 0.4), 
+                0 -10px 10px rgba(94, 147, 123, 0.3), 
+                0 -10px 10px rgba(18, 36, 33, 0.2);
+}
+
+/* Footer content styling */
+.footer-content p {
+    margin: 0; /* Remove margin to ensure it doesn't push the footer up */
+    padding: 0;
+    color: white; /* Ensure the text color is visible */
+}

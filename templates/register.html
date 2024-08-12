@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Register - E-Library{% endblock %}
+{% block heading %}Register for 8SecRead{% endblock %}
+{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">{% endblock %}
+{% block content %}
+    <div>
+        <form class="register-form" method="POST" action="/register">
+            <div class="sub-cont">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" maxlength="10" required>
+            </div>
+            <div class="sub-cont">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="sub-cont">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="sub-cont">
+                <label for="con_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="con_password" required>
+                {% if error %}
+                <p style="color: red;">{{ error }}</p>
+                {% endif %}
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a>.</p>
+    </div>
+{% endblock %}

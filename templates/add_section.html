@@ -1,0 +1,53 @@
+{% extends "base_dashboard.html" %}
+
+{% block profile %}
+    {% include 'admin_profile.html' %}
+{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='flash.css') }}">
+{% endblock %}
+
+
+{% block search %}
+<form class="search-form" action="{{ url_for('admin_search') }}" method="GET" onsubmit="return false;">
+    <div class="search">
+        <input type="text" name="query" id="search-input" placeholder="search...">
+    </div>
+</form>
+<script src="{{ url_for('static', filename='admin_search.js') }}"></script>
+{% endblock %}   
+
+{% block add_section %}
+<div class="add-form-cont">
+    <!-- Flash messages section -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Add Section Form -->
+    <form class="add-section" action="{{ url_for('add_section') }}" method="POST" enctype="multipart/form-data">
+        <label for="sec_name">Section Name:</label>
+        <input type="text" id="sec_name" name="sec_name" required><br><br>
+    
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea><br><br>
+
+        <label for="sec_image">Image:</label>
+        <input type="file" id="sec_image" name="sec_image" accept=".png, .jpg, .gif"><br><br>
+
+        <button type="submit">Add Section</button>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='flash.js') }}"></script>
+
+{% endblock %}

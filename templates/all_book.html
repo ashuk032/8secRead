@@ -1,0 +1,59 @@
+{% extends 'base_dashboard.html' %}
+
+
+{% block search %}
+
+<form class="search-form" action="{ url_for('user_search') }" method="GET" onsubmit="return false;">
+    <div class="search">
+        <input type="text" name="query" id="search-input" placeholder="search...">
+    </div>
+</form>   
+
+{% endblock %}     
+
+{% block profile %}
+    {% include 'user_profile.html' %}
+    <script src="/static/user_search.js"></script>  
+{% endblock %}
+
+
+
+{% block all_book %}
+
+
+<h1>All books:</h1>
+<div class="book-sections-user">
+    <div class="books">
+        {% for book in recent_books_all %}
+            <div class="book">
+                <a href="{{ url_for('view_book_pdf', book_id=book.book_id) }}">
+                    <img src="{{ url_for('book_con', filename=book.book_image) }}" alt="Book Image">
+                </a>
+                <h3>{{ book.name }}</h3>
+                <p>Author: {{ book.author }}</p>
+                <p>Section: {{ book.sec_name }}</p>
+                {% if book_already_requested(session.get('user_id'), book.book_id) %}
+                    {% if book_request_status(book.book_id,user.user_id) == 'Approved' %}
+                        <form method="POST" action="/api/return-book">
+                            <input type="hidden" name="book_id" value="{{ book.book_id }}">
+                            <button type="submit" class="btn btn-danger">Return</button>
+                        </form>
+                    {% else %}
+                        <button type="button" class="btn btn-success">Requested</button>
+                    {% endif %}
+                {% else %}
+                    <form method="POST" action="/api/request-book">
+                        <input type="hidden" name="user_id" value="{{ user_id }}">
+                        <input type="hidden" name="book_id" value="{{ book.book_id }}">
+                        <button type="submit" class="btn btn-primary">Request</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}
+

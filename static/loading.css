@@ -1,0 +1,19 @@
+.loading-container {
+    display: grid;
+    place-items: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.img-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-box img {
+    width: 200px;
+    height: auto;
+}
+

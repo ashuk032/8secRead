@@ -1,0 +1,93 @@
+{% extends 'base_dashboard.html' %}
+
+{% block profile %}
+    {% include 'admin_profile.html' %}
+{% endblock %}
+
+{% block search %}
+<form class="search-form" action="{{ url_for('admin_search') }}" method="GET" onsubmit="return false;">
+    <div class="search">
+        <input type="text" name="query" id="search-input" placeholder="search...">
+    </div>
+</form>
+<script src="{{ url_for('static', filename='admin_search.js') }}"></script>
+{% endblock %}   
+
+{% block content %}
+<div id="admin-stats" class="admin-stats">
+    <h2>Admin Statistics</h2>
+    <div class="admin-graphs">
+        <h3>Bar Graph - Section-wise Distribution of Books Issued</h3>
+        <canvas id="barChart"></canvas>
+        <h3>Pie Chart - Section-wise Book Requests Distribution</h3>
+        <canvas id="pieChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Prepare data for the charts
+    const sectionNames = JSON.parse('{{ section_names | tojson | safe }}');
+    const sectionCounts = JSON.parse('{{ section_counts | tojson | safe }}');
+
+    // Bar Chart
+    var ctxBar = document.getElementById('barChart').getContext('2d');
+    new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+            labels: sectionNames,
+            datasets: [{
+                label: 'Number of Books Issued',
+                data: sectionCounts,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Pie Chart
+    var ctxPie = document.getElementById('pieChart').getContext('2d');
+    new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: sectionNames,
+            datasets: [{
+                data: sectionCounts,
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)', 
+                    'rgba(255, 159, 64, 0.2)', 
+                    'rgba(54, 162, 235, 0.2)', 
+                    'rgba(255, 206, 86, 0.2)', 
+                    'rgba(153, 102, 255, 0.2)', 
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)', 
+                    'rgba(255, 159, 64, 1)', 
+                    'rgba(54, 162, 235, 1)', 
+                    'rgba(255, 206, 86, 1)', 
+                    'rgba(153, 102, 255, 1)', 
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            aspectRatio: 1
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base_dashboard.html' %}
+
+{% block profile %}
+    {% include 'admin_profile.html' %}
+{% endblock %}
+
+{% block search %}
+
+<form class="search-form" action="{ url_for('admin_search') }" method="GET" onsubmit="return false;">
+    <div class="search">
+        <input type="text" name="query" id="search-input" placeholder="search...">
+    </div>
+</form>
+
+<script src="{{ url_for('static', filename='admin_search.js') }}"></script>
+
+{% endblock %}   
+
+{% block content %}
+    <div class="book-requests">
+        <h2>Book Requests</h2>
+        {% if requests %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>User</th>
+                        <th>Book</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in requests %}
+                        <tr class="user-data" >
+                            <td>{{ request.id }}</td>
+                            <td>{{ request.user.username }}</td>
+                            <td>{{ request.book.name }}</td>
+                            <td>
+                                <form method="POST" action="{% if request.status == 'Rejected' %}/api/delete-request{% else %}/api/update-request-status{% endif %}">
+                                    <input type="hidden" name="request_id" value="{{ request.id }}">
+                                    <select name="status">
+                                        <option value="Pending" {% if request.status == 'Pending' %} selected {% endif %}>Pending</option>
+                                        <option value="Approved" {% if request.status == 'Approved' %} selected {% endif %}>Approved</option>
+                                        <option value="Rejected" {% if request.status == 'Rejected' %} selected {% endif %}>Rejected</option>
+                                        <option value="Returned" {% if request.status == 'Returned' %} selected {% endif %}>Returned</option>
+                                    </select>
+                                    {% if request.status != 'Rejected' %}
+                                    <button type="submit">Update</button>
+                                    {% endif %}
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No book requests available.</p>
+        {% endif %}
+    </div>
+{% endblock %}

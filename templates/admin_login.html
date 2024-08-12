@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block heading %}Admin Login{% endblock %}
+
+{% block content %}
+    <form method="POST" class="box" action="{{ url_for('admin_login') }}">
+        <div class="form-group">
+            <label for="admin_username">Username:</label>
+            <input type="text" id="admin_username" name="admin_username" required>
+        </div>
+        <div class="form-group">
+            <label for="admin_password">Password:</label>
+            <input type="password" id="admin_password" name="admin_password" required>
+        </div>
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}

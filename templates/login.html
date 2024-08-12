@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}User Login{% endblock %}
+
+{% block heading %}User Login{% endblock %}
+
+{% block content %}
+    <form class="box" class="form" method="POST" action="{{ url_for('login') }}">
+        <div class="sub-cont">
+            <label>Username:</label>
+            <input type="text" name="username">
+        </div>
+        <div class="sub-cont">
+            <label>Password:</label>
+            <input type="password" name="password">
+            {% if error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+        </div>
+        <button class="submit">Login</button>
+        <a href="{{ url_for('register') }}"><button type="button">Register</button></a>
+    </form>
+{% endblock %}

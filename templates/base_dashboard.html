@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base_dashboard.css') }}">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<script src="{{ url_for('static', filename='function.js') }}"></script>
+
+
+<div class="nav-head">
+    <div class="logo">
+        <a href="{% if 'logged_in' in session and 'admin_logged_in' not in session %}/user/{{ session['username'] }}{% else %}/admin/dashboard{% endif %}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        </a>         
+    </div>
+    <div class="user-icon" onclick="toggleProfile()">
+        <img src="{{ url_for('static', filename='images/person-circle.svg') }}">
+    </div>
+    {% block search %}{% endblock %}     
+</div>
+
+
+{% block profile %}{% endblock %}
+
+
+{% block content %}{% endblock %}
+
+{% block add_section %}{% endblock %} 
+
+{% block display_section %}{% endblock %}
+
+{% block book_user_display %}{% endblock %}
+
+{% block all_book %}{% endblock %}
+
+
+
+
+<!-- <footer>
+    <div class="footer-content">
+        <p>&copy; 2024 8SecRead. All rights reserved.</p>
+    </div>
+</footer> -->
+</body>
+</html>

@@ -1,0 +1,35 @@
+/* Container for flash messages */
+.flash-messages {
+    position: fixed;
+    bottom: 10px; /* Position from the bottom of the screen */
+    right: 10px; /* Position from the right side of the screen */
+    z-index: 1050; /* Ensure it appears above other content */
+}
+
+/* Style for individual flash messages */
+.flash-messages .alert {
+    margin: 5px 0; /* Spacing between messages */
+    padding: 10px 20px;
+    border-radius: 4px;
+    opacity: 1;
+    transition: opacity 1s ease-out; /* Fade out effect */
+}
+
+/* Success message styling */
+.flash-messages .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Error message styling */
+.flash-messages .alert-error {
+    background-color: #ff0015;
+    color: #ffffff;
+    border: 1px solid #ff0019;
+}
+
+/* Hide message after 3 seconds */
+.flash-messages .alert.hide {
+    opacity: 0;
+}

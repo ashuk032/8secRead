@@ -1,0 +1,36 @@
+{% extends 'base_dashboard.html' %}
+
+{% block search %}
+
+<form class="search-form" action="{ url_for('user_search') }" method="GET" onsubmit="return false;">
+    <div class="search">
+        <input type="text" name="query" id="search-input" placeholder="search...">
+    </div>
+</form>   
+
+{% endblock %}     
+
+{% block content %}
+    {% include 'user_profile.html' %}
+    
+    <h1>Search Results for "{{ query }}"</h1>
+
+    <div class="search-display">
+        {% for book in results %}
+        <div class="search-box">
+            <div class="book-search">
+                <img src="{{ url_for('book_con', filename=book.book_image) }}" alt="Book Image" class="book-img">
+                <p>Book name: {{ book.name }}</p>
+                <p>Genre: {{ book.genre }}</p>
+                <p>Author Name: {{ book.author }}</p>
+                <form method="POST" action="/api/request-book">
+                    <input type="hidden" name="user_id" value="{{ user_id }}">
+                    <input type="hidden" name="book_id" value="{{ book.book_id }}">
+                    <button type="submit">Request</button>
+                </form>
+            </div>   
+        </div>
+       {% endfor %}
+    </div>
+<script src="{{ url_for('static', filename='user_search.js') }}"></script>
+{% endblock %}

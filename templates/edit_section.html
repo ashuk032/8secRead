@@ -1,0 +1,28 @@
+{% extends 'base_dashboard.html' %}
+
+{% block profile %}
+    {% include 'admin_profile.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="edit-sec-cont">
+    <div class="edit-sec">
+        <img src="{{ url_for('uploaded_file', filename=section.sec_image) }}" alt="Current Image">
+        <h1>Edit Section</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="sec_name">Section Name:</label>
+            <input type="text" name="sec_name" id="sec_name" value="{{ section.sec_name }}" required><br>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" required>{{ section.description }}</textarea><br>
+            <label for="sec_image">Section Image:</label>
+            <input type="file" name="sec_image" id="sec_image" accept="image/*"><br>
+            <div class="edit-sec-but">
+                <button class="sav-but" type="submit">Save Changes</button>
+            </form>
+            <form method="POST" action="{{ url_for('delete_section', section_id=section.id) }}">
+                <button class="del-but" type="submit">Delete</button>
+            </form>
+            </div>
+    </div>
+</div>
+{% endblock %}

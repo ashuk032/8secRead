@@ -1,0 +1,47 @@
+{% extends 'base_dashboard.html' %}
+
+
+{% block profile %}
+    {% include 'admin_profile.html' %}
+{% endblock %}
+
+{% block search %}
+
+<form class="search-form" action="{ url_for('admin_search') }" method="GET" onsubmit="return false;">
+    <div class="search">
+        <input type="text" name="query" id="search-input" placeholder="search...">
+    </div>
+</form>
+
+<script src="{{ url_for('static', filename='admin_search.js') }}"></script>
+
+{% endblock %} 
+
+{% block content %}
+<div class="edit-book-cont">
+    <div class="edit-book">
+        <h1>Edit Book</h1>
+        <form action="{{ url_for('edit_book', book_id=book.book_id) }}" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="name">Book Name:</label>
+                <input type="text" id="name" name="name" value="{{ book.name }}" required>
+            </div>
+            <div>
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" value="{{ book.author }}" required>
+            </div>
+            <div>
+                <label for="sec_name">Section Name:</label>
+                <input type="text" id="sec_name" name="sec_name" value="{{ book.section.sec_name }}" required>
+            </div>
+            <div>
+                <label for="book_image">Upload New Book Image:</label>
+                <input type="file" id="book_image" name="book_image">
+            </div>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

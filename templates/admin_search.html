@@ -1,0 +1,48 @@
+{% extends 'base_dashboard.html' %}
+
+{% block search %}
+
+<form class="search-form" action="{ url_for('admin_search') }" method="GET" onsubmit="return false;">
+    <div class="search">
+        <input type="text" name="query" id="search-input" placeholder="search...">
+    </div>
+</form>   
+
+{% endblock %}   
+
+{% block content %}
+    {% include 'admin_profile.html' %}
+    
+    <h1>Search Results for "{{ search_query }}"</h1>
+    <h2>Sections:</h2>
+    <div class="sec-dis">
+        {% for section in section_results %}
+        <div class="sec-dis-box">
+            <a href="{{ url_for('section_book_display', section_id=section.id) }}">
+                <img src="{{ url_for('uploaded_file', filename=section.sec_image) }}" alt="Section Image">
+            </a>
+            <p>Section name: {{ section.sec_name }}</p>
+            <p>Description: {{ section.description }}</p>
+            <div class="sec-button">
+                <a href="{{ url_for('edit_section', section_id=section.id) }}"><button>Edit</button></a>
+                <a href="{{ url_for('add_book', section_id=section.id) }}"><button>Add Book</button></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <h2 id="ser-h">Books:</h2>
+    <div class="search-display">
+        {% for book in book_results %}
+        <div class="search-box">
+            <div class="book-search">
+                <img src="{{ url_for('book_con', filename=book.book_image) }}" alt="Book Image" class="book-img">
+                <p>Book name: {{ book.name }}</p>
+                <p>Genre: {{ book.genre }}</p>
+                <p>Author Name: {{ book.author }}</p>
+            </div>   
+        </div>
+        {% endfor %}
+    </div>
+<script src="/static/admin_search.js"></script> 
+{% endblock %}

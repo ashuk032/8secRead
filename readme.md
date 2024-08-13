@@ -88,3 +88,7 @@ and install all the requirements from the requirements.txt file.
 ├── debug.log            # Log file for debugging // get the file after running the app.py
 └── app.py               # Main Python script containing application code
 
+
+
+
+
